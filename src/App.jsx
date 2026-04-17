@@ -1,8 +1,8 @@
-﻿import './App.css';
-import SearchBar from './components/SearchBar';
-import CurrentWeather from './components/CurrentWeather';
-import Forecast from './components/Forecast';
-import { useWeather } from './hooks/useWeather';
+﻿import "./App.css";
+import SearchBar from "./components/SearchBar";
+import CurrentWeather from "./components/CurrentWeather";
+import Forecast from "./components/Forecast";
+import { useWeather } from "./hooks/useWeather";
 
 function App() {
   const { weather, loading, error, fetchWeather } = useWeather();
@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>???? Weather App</h1>
+        <h1>Weather App</h1>
         <p className="subtitle">Dự báo thời tiết - Powered by Open-Meteo</p>
       </header>
 
@@ -18,7 +18,6 @@ function App() {
         <SearchBar onSearch={fetchWeather} loading={loading} />
 
         {error && <div className="error-box">{error}</div>}
-
 
         {loading && (
           <div className="loading-box">
@@ -38,9 +37,17 @@ function App() {
           <div className="empty-state">
             <p>Nhap ten thanh pho de xem thoi tiet</p>
             <div className="quick-cities">
-              {['Ha Noi', 'Ho Chi Minh', 'Da Nang', 'Tokyo', 'Paris'].map((c) => (
-                <button key={c} className="quick-btn" onClick={() => fetchWeather(c)}>{c}</button>
-              ))}
+              {["Ha Noi", "Ho Chi Minh", "Da Nang", "Tokyo", "Paris"].map(
+                (c) => (
+                  <button
+                    key={c}
+                    className="quick-btn"
+                    onClick={() => fetchWeather(c)}
+                  >
+                    {c}
+                  </button>
+                ),
+              )}
             </div>
           </div>
         )}
